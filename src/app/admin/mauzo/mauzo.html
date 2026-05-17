@@ -1,0 +1,85 @@
+<div class="admin-section-card">
+  <div class="section-header">
+    <div>
+      <h2>Usimamizi wa Mauzo</h2>
+      <p>Rekodi mauzo mapya na angalia muhtasari wa mauzo ya leo, wiki na mwezi.</p>
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <span>Leo</span>
+      <strong>{{ todayTotal | number:'1.2-2' }}</strong>
+    </div>
+    <div class="summary-card">
+      <span>Wiki</span>
+      <strong>{{ weekTotal | number:'1.2-2' }}</strong>
+    </div>
+    <div class="summary-card">
+      <span>Mwezi</span>
+      <strong>{{ monthTotal | number:'1.2-2' }}</strong>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ isEditMode ? 'Hariri Mauzo' : 'Ongeza Mauzo Mpya' }}</h3>
+    <div class="form-row">
+      <label>Jina la bidhaa/huduma</label>
+      <input type="text" [(ngModel)]="selectedSale.item_name" />
+    </div>
+    <div class="form-row">
+      <label>Kiasi</label>
+      <input type="number" [(ngModel)]="selectedSale.quantity" min="1" />
+    </div>
+    <div class="form-row">
+      <label>Bei (kwa kila moja)</label>
+      <input type="number" [(ngModel)]="selectedSale.price" min="0" step="0.01" />
+    </div>
+    <div class="form-row">
+      <label>Jumla</label>
+      <input [value]="selectedSale.quantity * selectedSale.price | number:'1.2-2'" disabled />
+    </div>
+    <div class="form-row">
+      <label>Tarehe</label>
+      <input type="date" [(ngModel)]="selectedSale.sale_date" />
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="saveSale()" [disabled]="isLoading">{{ isEditMode ? 'Hifadhi Mabadiliko' : 'Ongeza Mauzo' }}</button>
+      <button class="btn-cancel" type="button" (click)="cancelEdit()" *ngIf="isEditMode">Ghairi</button>
+    </div>
+    <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+
+  <div class="table-card">
+    <h3>Orodha ya Mauzo</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Jina</th>
+          <th>Kiasi</th>
+          <th>Bei</th>
+          <th>Jumla</th>
+          <th>Tarehe</th>
+          <th>Vitendo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td>{{ sale.item_name }}</td>
+          <td>{{ sale.quantity }}</td>
+          <td>{{ sale.price | number:'1.2-2' }}</td>
+          <td>{{ sale.total | number:'1.2-2' }}</td>
+          <td>{{ sale.sale_date }}</td>
+          <td class="actions">
+            <button type="button" (click)="editSale(sale)">Hariri</button>
+            <button type="button" class="btn-delete" (click)="deleteSale(sale.id!)">Futa</button>
+          </td>
+        </tr>
+        <tr *ngIf="sales.length === 0">
+          <td colspan="6" class="empty-state">Hakuna mauzo yaliyorekodiwa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

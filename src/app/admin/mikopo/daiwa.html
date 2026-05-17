@@ -1,0 +1,107 @@
+<div class="admin-section-card">
+  <div class="section-header">
+    <div>
+      <h2>Mikopo Daiwa</h2>
+      <p>Orodha ya mikopo ninayodaiwa kwa suppliers na watu wengine.</p>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ isEditMode ? 'Hariri Daiwa' : 'Ongeza Daiwa Mpya' }}</h3>
+    <div class="form-row">
+      <label>Jina</label>
+      <input type="text" [(ngModel)]="selectedAccount.name" />
+    </div>
+    <div class="form-row">
+      <label>Kiasi</label>
+      <input type="number" [(ngModel)]="selectedAccount.amount_due" min="0" step="0.01" />
+    </div>
+    <div class="form-row">
+      <label>Tarehe</label>
+      <input type="date" [(ngModel)]="selectedAccount.due_date" />
+    </div>
+    <div class="form-row">
+      <label>Hali</label>
+      <select [(ngModel)]="selectedAccount.status">
+        <option value="Inasubiri">Inasubiri</option>
+        <option value="Imelipwa">Imelipwa</option>
+        <option value="Inalipwa">Inalipwa</option>
+      </select>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" type="button" (click)="saveAccount()" [disabled]="isLoading">{{ isEditMode ? 'Hifadhi Mabadiliko' : 'Ongeza Daiwa' }}</button>
+      <button class="btn-cancel" type="button" (click)="cancelEdit()" *ngIf="isEditMode">Ghairi</button>
+    </div>
+    <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+
+  <div class="table-card">
+    <h3>Orodha ya Daiwa</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Jina</th>
+          <th>Kiasi</th>
+          <th>Hali</th>
+          <th>Tarehe</th>
+          <th>Vitendo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts">
+          <td>{{ account.name }}</td>
+          <td>{{ account.amount_due | number:'1.2-2' }}</td>
+          <td>{{ account.status }}</td>
+          <td>{{ account.due_date }}</td>
+          <td class="actions">
+            <button type="button" (click)="editAccount(account)">Hariri</button>
+            <button type="button" class="btn-delete" (click)="deleteAccount(account.id!)">Futa</button>
+            <button type="button" class="btn-secondary" (click)="openPayment(account)">Malipo</button>
+            <button type="button" class="btn-secondary" (click)="toggleHistory(account.id!)">Historia</button>
+          </td>
+        </tr>
+        <tr *ngIf="accounts.length === 0">
+          <td colspan="5" class="empty-state">Hakuna daiwa iliyorekodiwa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="payment-card" *ngIf="paymentAccount">
+    <h3>Malipo kwa: {{ paymentAccount.name }}</h3>
+    <div class="form-row">
+      <label>Kiasi kilicholipwa</label>
+      <input type="number" [(ngModel)]="paymentAmount" min="0" step="0.01" />
+    </div>
+    <div class="form-row">
+      <label>Tarehe ya malipo</label>
+      <input type="date" [(ngModel)]="paymentDate" />
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" type="button" (click)="savePayment()" [disabled]="isLoading">Hifadhi Malipo</button>
+      <button class="btn-cancel" type="button" (click)="paymentAccount = undefined">Ghairi</button>
+    </div>
+  </div>
+
+  <div class="history-card" *ngIf="showHistoryAccountId !== undefined">
+    <h3>Historia ya Malipo</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Kiasi</th>
+          <th>Tarehe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of paymentsForAccount(showHistoryAccountId)">
+          <td>{{ payment.amount_paid | number:'1.2-2' }}</td>
+          <td>{{ payment.payment_date }}</td>
+        </tr>
+        <tr *ngIf="paymentsForAccount(showHistoryAccountId).length === 0">
+          <td colspan="2" class="empty-state">Hakuna malipo yaliyorekodiwa kwa daiwa hii.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

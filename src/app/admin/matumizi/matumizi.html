@@ -1,0 +1,58 @@
+<div class="admin-section-card">
+  <div class="section-header">
+    <div>
+      <h2>Usimamizi wa Matumizi</h2>
+      <p>Rekodi matumizi ya duka na uangalie orodha ya matumizi yote.</p>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ isEditMode ? 'Hariri Matumizi' : 'Ongeza Matumizi Mapya' }}</h3>
+    <div class="form-row">
+      <label>Jina la matumizi</label>
+      <input type="text" [(ngModel)]="selectedExpense.name" />
+    </div>
+    <div class="form-row">
+      <label>Kiasi</label>
+      <input type="number" [(ngModel)]="selectedExpense.amount" min="0" step="0.01" />
+    </div>
+    <div class="form-row">
+      <label>Tarehe</label>
+      <input type="date" [(ngModel)]="selectedExpense.expense_date" />
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="saveExpense()" [disabled]="isLoading">{{ isEditMode ? 'Hifadhi Mabadiliko' : 'Ongeza Matumizi' }}</button>
+      <button class="btn-cancel" type="button" (click)="cancelEdit()" *ngIf="isEditMode">Ghairi</button>
+    </div>
+    <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+
+  <div class="table-card">
+    <h3>Orodha ya Matumizi</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Jina la matumizi</th>
+          <th>Kiasi</th>
+          <th>Tarehe</th>
+          <th>Vitendo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expense of expenses">
+          <td>{{ expense.name }}</td>
+          <td>{{ expense.amount | number:'1.2-2' }}</td>
+          <td>{{ expense.expense_date }}</td>
+          <td class="actions">
+            <button type="button" (click)="editExpense(expense)">Hariri</button>
+            <button type="button" class="btn-delete" (click)="deleteExpense(expense.id!)">Futa</button>
+          </td>
+        </tr>
+        <tr *ngIf="expenses.length === 0">
+          <td colspan="4" class="empty-state">Hakuna matumizi yaliyorekodiwa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

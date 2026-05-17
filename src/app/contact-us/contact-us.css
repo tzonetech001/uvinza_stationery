@@ -1,0 +1,172 @@
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-header h1 {
+  color: #007bff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contact-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-item h3 {
+  color: #007bff;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.contact-link {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border: 2px solid #007bff;
+}
+
+.contact-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.whatsapp-link {
+  background-color: #25d366;
+  border-color: #25d366;
+}
+
+.whatsapp-link:hover {
+  background-color: #128c7e;
+  border-color: #128c7e;
+}
+
+.email-link {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.email-link:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+.sms-link {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.sms-link:hover {
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+.contact-note {
+  background-color: #e9ecef;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-note p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.contact-note strong {
+  color: #007bff;
+}
+
+/* Dark theme support */
+body.dark-theme .contact-header h1 {
+  color: #4dabf7;
+}
+
+body.dark-theme .contact-content p {
+  color: #cccccc;
+}
+
+body.dark-theme .contact-item {
+  background-color: #2d3748;
+  border-color: #4a5568;
+}
+
+body.dark-theme .contact-item h3 {
+  color: #4dabf7;
+}
+
+body.dark-theme .contact-item p {
+  color: #adb5bd;
+}
+
+body.dark-theme .contact-note {
+  background-color: #343a40;
+}
+
+body.dark-theme .contact-note p {
+  color: #adb5bd;
+}
+
+body.dark-theme .contact-note strong {
+  color: #4dabf7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .contact-header h1 {
+    font-size: 2rem;
+  }
+}

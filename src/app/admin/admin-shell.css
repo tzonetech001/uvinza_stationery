@@ -1,0 +1,299 @@
+/* admin-shell.css - UVINZA STATIONERY modern admin shell */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: #eef2f8;
+  color: #1f2a41;
+}
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #eef2f8;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0a1a2f 0%, #0c1e36 100%);
+  color: #eef2ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.4rem;
+  gap: 1.8rem;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #2a7fdd, #1a5bbf);
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.brand-title {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.brand-subtitle {
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: #95a9c5;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.sidebar-link,
+.btn-logout-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #c6d3eb;
+  background: transparent;
+  border: none;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover,
+.btn-logout-sidebar:hover {
+  transform: translateX(4px);
+  color: #fff;
+  background: rgba(42, 127, 221, 0.18);
+}
+
+.sidebar-link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-link i,
+.btn-logout-sidebar i {
+  width: 22px;
+  text-align: center;
+}
+
+.btn-logout-sidebar {
+  margin-top: auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffcece;
+}
+
+.btn-logout-sidebar:hover {
+  background: rgba(199, 42, 47, 0.2);
+  color: #fff;
+}
+
+.admin-main {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #eef2f8;
+}
+
+.admin-header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid #e3e9f4;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  border: 1px solid #dce3ec;
+  background: #f8fbff;
+  color: #2c3e66;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.desktop-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a2a46;
+}
+
+.admin-user-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2a7fdd, #1a5bbf);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.admin-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.admin-user-info span:first-child {
+  font-weight: 700;
+  color: #0f1f38;
+}
+
+.logout-btn {
+  background: #f7faff;
+  border: 1px solid #dce3ec;
+  color: #4b628f;
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #eef3ff;
+  border-color: #bac8f5;
+}
+
+.admin-content {
+  padding: 2rem 2.5rem;
+  flex: 1;
+}
+
+/* RESPONSIVE - TABLETS */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    width: 280px;
+  }
+  
+  .admin-shell.sidebar-open .admin-sidebar {
+    transform: translateX(0);
+  }
+  
+  .admin-main {
+    margin-left: 0;
+  }
+  
+  .sidebar-toggle {
+    display: inline-flex;
+  }
+  
+  .desktop-logo {
+    display: none;
+  }
+  
+  .mobile-logo {
+    display: block;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #1a5bbf;
+  }
+  
+  .admin-header {
+    height: 80px;
+    padding: 0 1.5rem;
+  }
+  
+  .admin-content {
+    padding: 1.5rem;
+  }
+}
+
+/* RESPONSIVE - PHONES */
+@media (max-width: 768px) {
+  .admin-header {
+    height: 70px;
+    padding: 0 1rem;
+  }
+  
+  .admin-content {
+    padding: 1rem;
+  }
+  
+  .admin-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+  
+  .admin-user-info span:first-child {
+    font-size: 0.85rem;
+  }
+  
+  .logout-btn {
+    padding: 0.3rem 1rem;
+    font-size: 0.7rem;
+  }
+}

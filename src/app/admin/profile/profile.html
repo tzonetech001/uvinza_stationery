@@ -1,0 +1,122 @@
+<div class="profile-container">
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Profile Header Card -->
+  <div class="profile-header-card">
+    <div class="profile-avatar">
+      <div class="avatar-large">{{ getAvatarInitials() }}</div>
+      <h2>{{ getFullName() }}</h2>
+      <p class="profile-role">{{ userProfile.role | titlecase }}</p>
+    </div>
+  </div>
+
+  <!-- Profile Information Card -->
+  <div class="profile-info-card">
+    <div class="card-header">
+      <h3>{{ adminLocalization.translateKey('personal_information') }}</h3>
+      <button class="btn-edit" (click)="toggleEditMode()" *ngIf="!editMode">
+        {{ adminLocalization.translateKey('edit_profile') }}
+      </button>
+    </div>
+
+    <!-- View Mode -->
+    <div class="profile-details" *ngIf="!editMode">
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('first_name') }}:</div>
+        <div class="detail-value">{{ userProfile.first_name || '—' }}</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('last_name') }}:</div>
+        <div class="detail-value">{{ userProfile.last_name || '—' }}</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('email_address') }}:</div>
+        <div class="detail-value">{{ userProfile.email || '—' }}</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('phone_number') }}:</div>
+        <div class="detail-value">{{ userProfile.phone || '—' }}</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('role') }}:</div>
+        <div class="detail-value role-badge">{{ userProfile.role | titlecase }}</div>
+      </div>
+    </div>
+
+    <!-- Edit Mode -->
+    <div class="profile-edit-form" *ngIf="editMode">
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('first_name') }}</label>
+        <input type="text" [(ngModel)]="userProfile.first_name" placeholder="{{ adminLocalization.translateKey('enter_first_name') }}" />
+      </div>
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('last_name') }}</label>
+        <input type="text" [(ngModel)]="userProfile.last_name" placeholder="{{ adminLocalization.translateKey('enter_last_name') }}" />
+      </div>
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('email_address') }}</label>
+        <input type="email" [(ngModel)]="userProfile.email" placeholder="{{ adminLocalization.translateKey('enter_email_address') }}" />
+      </div>
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('phone_number') }}</label>
+        <input type="tel" [(ngModel)]="userProfile.phone" placeholder="{{ adminLocalization.translateKey('enter_phone_number') }}" />
+      </div>
+      <div class="form-actions">
+        <button class="btn-cancel" (click)="toggleEditMode()">{{ adminLocalization.translateKey('cancel') }}</button>
+        <button class="btn-save" (click)="updateProfile()" [disabled]="isLoading">
+          {{ isLoading ? adminLocalization.translateKey('saving') : adminLocalization.translateKey('save_changes') }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password Card -->
+  <div class="profile-info-card">
+    <div class="card-header">
+      <h3>{{ adminLocalization.translateKey('security_password') }}</h3>
+      <button class="btn-edit" (click)="togglePasswordMode()" *ngIf="!changePasswordMode">
+        {{ adminLocalization.translateKey('change_password') }}
+      </button>
+    </div>
+
+    <!-- View Mode -->
+    <div class="profile-details" *ngIf="!changePasswordMode">
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('password') }}:</div>
+        <div class="detail-value">••••••••</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">{{ adminLocalization.translateKey('last_changed') }}:</div>
+        <div class="detail-value">{{ adminLocalization.translateKey('not_available') }}</div>
+      </div>
+    </div>
+
+    <!-- Change Password Mode -->
+    <div class="profile-edit-form" *ngIf="changePasswordMode">
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('current_password') }}</label>
+        <input type="password" [(ngModel)]="passwordData.current_password" placeholder="{{ adminLocalization.translateKey('enter_current_password') }}" />
+      </div>
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('new_password') }}</label>
+        <input type="password" [(ngModel)]="passwordData.new_password" placeholder="{{ adminLocalization.translateKey('enter_new_password') }}" />
+      </div>
+      <div class="form-group">
+        <label>{{ adminLocalization.translateKey('confirm_new_password') }}</label>
+        <input type="password" [(ngModel)]="passwordData.confirm_password" placeholder="{{ adminLocalization.translateKey('confirm_new_password') }}" />
+      </div>
+      <div class="form-actions">
+        <button class="btn-cancel" (click)="togglePasswordMode()">{{ adminLocalization.translateKey('cancel') }}</button>
+        <button class="btn-save" (click)="changePassword()" [disabled]="isLoading">
+          {{ isLoading ? adminLocalization.translateKey('changing') : adminLocalization.translateKey('change_password') }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

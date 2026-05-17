@@ -1,0 +1,114 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>Uvinza Stationery</h1>
+      <p>{{ languageService.translate('Create a new account', 'Unda akaunti mpya') }}</p>
+    </div>
+
+    <div class="auth-form">
+      <form (ngSubmit)="onRegister()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">{{ languageService.translate('First Name', 'Jina la kwanza') }}</label>
+            <input
+              type="text"
+              id="first_name"
+              [(ngModel)]="first_name"
+              name="first_name"
+              placeholder="{{ languageService.translate('Enter your first name', 'Ingiza jina lako la kwanza') }}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="last_name">{{ languageService.translate('Last Name', 'Jina la mwisho') }}</label>
+            <input
+              type="text"
+              id="last_name"
+              [(ngModel)]="last_name"
+              name="last_name"
+              placeholder="{{ languageService.translate('Enter your last name', 'Ingiza jina lako la mwisho') }}"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{ languageService.translate('Email', 'Barua pepe') }}</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="{{ languageService.translate('Enter your email', 'Ingiza barua pepe yako') }}"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">{{ languageService.translate('Phone Number', 'Nambari ya simu') }}</label>
+          <input
+            type="tel"
+            id="phone"
+            [(ngModel)]="phone"
+            name="phone"
+            placeholder="{{ languageService.translate('Enter your phone number', 'Ingiza nambari yako ya simu') }}"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="role">{{ languageService.translate('Role', 'Nafasi') }}</label>
+          <select
+            id="role"
+            [(ngModel)]="role"
+            name="role"
+            required
+          >
+            <option *ngFor="let roleOption of userRoles" [value]="roleOption">
+              {{ roleOption | titlecase }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">{{ languageService.translate('Password', 'Nenosiri') }}</label>
+            <input
+              type="password"
+              id="password"
+              [(ngModel)]="password"
+              name="password"
+              placeholder="{{ languageService.translate('Enter your password', 'Ingiza nenosiri lako') }}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password">{{ languageService.translate('Confirm Password', 'Thibitisha Nenosiri') }}</label>
+            <input
+              type="password"
+              id="confirm_password"
+              [(ngModel)]="confirm_password"
+              name="confirm_password"
+              placeholder="{{ languageService.translate('Confirm your password', 'Thibitisha nenosiri lako') }}"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-register" [disabled]="isLoading">
+          {{ isLoading ? languageService.translate('Registering...', 'Inasajiliwa...') : languageService.translate('Register', 'Jisajili') }}
+        </button>
+      </form>
+
+      <div *ngIf="registerError" class="error-message">
+        {{ registerError }}
+      </div>
+
+      <div class="auth-footer">
+        <p>{{ languageService.translate('Already have an account?', 'Tayari una akaunti?') }} <a (click)="goToLogin()">{{ languageService.translate('Login here', 'Ingia hapa') }}</a></p>
+      </div>
+    </div>
+  </div>
+</div>

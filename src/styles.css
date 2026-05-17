@@ -1,0 +1,69 @@
+/* Global styles */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222222;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-theme .auth-card,
+body.dark-theme .services-container,
+body.dark-theme .about-container,
+body.dark-theme .contact-container,
+body.dark-theme .main-content,
+body.dark-theme .contact-content {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.dark-theme .auth-container,
+body.dark-theme .services-header,
+body.dark-theme .about-header,
+body.dark-theme .contact-header {
+  color: #f1f1f1;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  background-color: #1b1b1b;
+  color: #ffffff;
+  border-color: #444444;
+}
+
+body.dark-theme a,
+body.dark-theme .contact-link,
+body.dark-theme .login-btn,
+body.dark-theme .theme-toggle,
+body.dark-theme .language-toggle {
+  color: #90caf9;
+}
+
+body.dark-theme .auth-card,
+body.dark-theme .services-list,
+body.dark-theme .contact-note {
+  border-color: #333333;
+}
+
+body.dark-theme .error-message,
+body.dark-theme .success-message {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}
+
+body.dark-theme .btn-login,
+body.dark-theme .btn-register,
+body.dark-theme .btn-submit {
+  background-color: #0d6efd;
+  color: #ffffff;
+}

@@ -1,0 +1,43 @@
+.app-footer {
+  background-color: #333;
+  color: #fff;
+  text-align: right;
+  padding: 0 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-weight: 300;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-footer {
+    font-size: 10px;
+    padding: 0 10px;
+    height: 18px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-footer {
+    font-size: 9px;
+    padding: 0 5px;
+    height: 16px;
+    line-height: 16px;
+  }
+}

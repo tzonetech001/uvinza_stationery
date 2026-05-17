@@ -1,0 +1,15 @@
+.admin-section-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(13, 34, 64, 0.08);
+}
+
+.admin-section-card h2 {
+  margin-top: 0;
+  color: #1c3d6e;
+}
+
+.admin-section-card p {
+  color: #4f5a6b;
+}

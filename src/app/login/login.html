@@ -1,0 +1,61 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>Uvinza Stationery</h1>
+      <p>{{ languageService.translate('Login to your account', 'Ingia kwenye akaunti yako') }}</p>
+    </div>
+
+    <div class="auth-form">
+      <form *ngIf="!isLoading" (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <label for="email">{{ languageService.translate('Email', 'Barua pepe') }}</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="{{ languageService.translate('Enter your email', 'Ingiza barua pepe yako') }}"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">{{ languageService.translate('Password', 'Nenosiri') }}</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="{{ languageService.translate('Enter your password', 'Ingiza nenosiri lako') }}"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-login">
+          {{ languageService.translate('Login', 'Ingia') }}
+        </button>
+      </form>
+
+      <div *ngIf="isLoading" class="loading-container">
+        <div class="loading-dots">
+          <div class="dot dot1"></div>
+          <div class="dot dot2"></div>
+          <div class="dot dot3"></div>
+        </div>
+        <p class="loading-text">{{ languageService.translate('Logging in...', 'Inaingia...') }}</p>
+      </div>
+      </div>
+
+      <div *ngIf="loginError" class="error-message">
+        {{ loginError }}
+      </div>
+
+      <div *ngIf="!isLoading" class="auth-footer">
+        <p>{{ languageService.translate('Don\'t have an account?', 'Huna akaunti?') }} <a (click)="goToRegister()">{{ languageService.translate('Register here', 'Jisajili hapa') }}</a></p>
+        <p><a (click)="goToForgotPassword()">{{ languageService.translate('Forgot Password?', 'Umesahau Nenosiri?') }}</a></p>
+      </div>
+    </div>
+
+  
+  </div>
+

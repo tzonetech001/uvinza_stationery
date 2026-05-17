@@ -1,0 +1,37 @@
+<header *ngIf="showPublicHeader()" class="header">
+  <div class="logo">
+    <img src="/uvinza.jpg" alt="Uvinza Stationery Logo" class="logo-img">
+  </div>
+
+  <nav class="navigation" [class.mobile-menu-open]="isMobileMenuOpen()">
+    <ul class="nav-list">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMobileMenu()">Home</a></li>
+      <li><a routerLink="/aboutus" routerLinkActive="active" (click)="toggleMobileMenu()">About Us</a></li>
+      <li><a routerLink="/our-service" routerLinkActive="active" (click)="toggleMobileMenu()">Our Service</a></li>
+      <li><a routerLink="/contacts-us" routerLinkActive="active" (click)="toggleMobileMenu()">Contact Us</a></li>
+      <li><a href="#" (click)="toggleMobileMenu()">Downloads</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <a routerLink="/login" class="login-btn">Login</a>
+
+    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="languageThemeService.isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'">
+      <span class="theme-icon">{{ languageThemeService.isDarkMode() ? '☀️' : '🌙' }}</span>
+    </button>
+
+    <button class="language-toggle" (click)="toggleLanguage()">
+      <span [class.active]="languageThemeService.isEnglish()">EN</span> / <span [class.active]="!languageThemeService.isEnglish()">SW</span>
+    </button>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" [attr.aria-label]="'Toggle mobile menu'">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

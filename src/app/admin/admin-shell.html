@@ -1,0 +1,79 @@
+<div class="admin-shell" [class.sidebar-open]="sidebarOpen">
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">UV</div>
+      <div>
+        <div class="brand-title">UVINZA STATIONERY</div>
+        <div class="brand-subtitle">Mfumo wa Usimamizi</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-menu">
+      <a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar-link">
+        <i class="fas fa-chart-line"></i>
+        <span>Dashibodi</span>
+      </a>
+      <a routerLink="mauzo" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-dollar-sign"></i>
+        <span>Mauzo</span>
+      </a>
+      <a routerLink="matumizi" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-receipt"></i>
+        <span>Matumizi</span>
+      </a>
+      <a routerLink="mikopo/dai" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-user-clock"></i>
+        <span>Mkopo - Dai</span>
+      </a>
+      <a routerLink="mikopo/daiwa" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-hand-holding-dollar"></i>
+        <span>Mkopo - Daiwa</span>
+      </a>
+
+      <a routerLink="manage-users" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-users-cog"></i>
+        <span>Watumiaji</span>
+      </a>
+      <a routerLink="message-center" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-comments"></i>
+        <span>Ujumbe</span>
+      </a>
+      <a routerLink="settings" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-cog"></i>
+        <span>Mipangilio</span>
+      </a>
+      <a routerLink="profile" routerLinkActive="active" class="sidebar-link">
+        <i class="fas fa-user"></i>
+        <span>Profaili</span>
+      </a>
+
+      <div class="spacer"></div>
+      <button type="button" class="sidebar-link btn-logout-sidebar" (click)="logout()">
+        <i class="fas fa-right-from-bracket"></i>
+        <span>Ondoka</span>
+      </button>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" type="button" (click)="toggleSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="desktop-logo">UVINZA STATIONERY</span>
+      </div>
+      <div class="admin-user-panel">
+        <div class="admin-avatar">{{ avatarText }}</div>
+        <div class="admin-user-info">
+          <span>{{ adminName }}</span>
+          <button class="logout-btn" type="button" (click)="logout()">Ondoka</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="admin-content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

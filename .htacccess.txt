@@ -1,0 +1,42 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block access to source files
+    <FilesMatch "\.(ts|js\.map|css\.map|scss|less|sass|spec\.ts|e2e-spec\.ts)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+    
+    # Block directory browsing
+    Options -Indexes
+    
+    # Hide .git directory
+    RedirectMatch 404 /\\.git
+    
+    # Block access to config files
+    <FilesMatch "^(angular\.json|package\.json|tsconfig\.json|\.env)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+    
+    # Angular routing
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# Disable ETags
+<IfModule mod_headers.c>
+    Header unset ETag
+    FileETag None
+    
+    # Security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

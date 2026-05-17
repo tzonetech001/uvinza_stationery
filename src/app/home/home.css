@@ -1,0 +1,24 @@
+.main-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.main-content h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.main-content p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Dark theme support */
+body.dark-theme .main-content h2 {
+  color: #ffffff;
+}
+
+body.dark-theme .main-content p {
+  color: #cccccc;
+}
