@@ -1,12 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Block access to source files
-    <FilesMatch "\.(ts|js\.map|css\.map|scss|less|sass|spec\.ts|e2e-spec\.ts)$">
-        Order allow,deny
-        Deny from all
-    </FilesMatch>
-    
     # Block directory browsing
     Options -Indexes
     
