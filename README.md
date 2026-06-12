@@ -27,10 +27,6 @@ This is a full authentication and user management system built with Angular (fro
 3. Create a new database named `uvinza_stationery`
 4. Run the SQL script from `database_setup.sql` to create the users table
 
-Alternatively, you can run the SQL file directly:
-```bash
-mysql -u root < database_setup.sql
-```
 
 ### 2. Backend Setup
 
