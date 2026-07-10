@@ -65,6 +65,8 @@ CREATE TABLE IF NOT EXISTS sales (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+
 -- Create matumizi table
 CREATE TABLE IF NOT EXISTS expenses (
     id INT AUTO_INCREMENT PRIMARY KEY,
