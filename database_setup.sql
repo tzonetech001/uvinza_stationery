@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS daiwa_payments (
 -- Create mauzo table
 CREATE TABLE IF NOT EXISTS sales (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    item_name VARCHAR(150) NOT NULL,
+    item_name VARCHAR(160) NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
     price DECIMAL(12,2) NOT NULL DEFAULT 0,
     total DECIMAL(12,2) NOT NULL DEFAULT 0,
