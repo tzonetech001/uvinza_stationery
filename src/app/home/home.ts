@@ -10,3 +10,4 @@ import { LanguageThemeService } from '../language-theme.service';
 export class HomeComponent {
   protected readonly languageService = inject(LanguageThemeService);
 }
+
